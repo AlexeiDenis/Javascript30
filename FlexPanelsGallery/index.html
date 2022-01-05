@@ -41,6 +41,7 @@
         font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
         flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
         background 0.2s;
+        will-change: font-size, flex, background;
       font-size: 20px;
       background-size: cover;
       background-position: center;
@@ -126,6 +127,11 @@
   <script>
   function Play(){
     this.classList.toggle('open');
+
+    panels.forEach(panel => {
+      if(panel != this){panel.classList.remove('open')}
+
+    })
     
   }
 
@@ -141,7 +147,17 @@ panels.forEach(panel => panel.addEventListener('click', Play));
 panels.forEach(panel => panel.addEventListener('transitionend', PlayonEnding));
   </script>
 
-
+<!-- function togglePanel(){
+  // Close the eventual current active
+  panels.forEach(panel => {
+    // permits collapsing all panels
+    if(panel != this){
+      panel.classList.remove('active') 
+    }
+  });
+  // Set the new active panel
+  this.classList.toggle('active');
+} -->
 
 </body>
 </html>
