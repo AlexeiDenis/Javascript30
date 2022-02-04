@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 
@@ -47,42 +49,44 @@
     </div>
   </div>
 
-  <audio data-key="65" src="./sounds/01 - JavaScript Drum Kit_sounds_clap.wav"></audio>
-  <audio data-key="83" src="./sounds/01 - JavaScript Drum Kit_sounds_hihat.wav"></audio>
-  <audio data-key="68" src="./sounds/01 - JavaScript Drum Kit_sounds_kick.wav"></audio>
-  <audio data-key="70" src="./sounds/01 - JavaScript Drum Kit_sounds_openhat.wav"></audio>
-  <audio data-key="71" src="./sounds/01 - JavaScript Drum Kit_sounds_boom.wav"></audio>
-  <audio data-key="72" src="./sounds/01 - JavaScript Drum Kit_sounds_ride.wav"></audio>
-  <audio data-key="74" src="./sounds/01 - JavaScript Drum Kit_sounds_snare.wav"></audio>
-  <audio data-key="75" src="./sounds/01 - JavaScript Drum Kit_sounds_tom.wav"></audio>
-  <audio data-key="76" src="./sounds/01 - JavaScript Drum Kit_sounds_tink.wav"></audio>
+  <audio data-key="65" src="./d/Cyberpunk_Mini_Noiiz/100_ D_AcidKindaSynth_849.wav"></audio>
+  <audio data-key="83" src="./d/Cyberpunk_Mini_Noiiz/SmackSnare_849.wav"></audio>
+  <audio data-key="68" src="./d/Cyberpunk_Mini_Noiiz/100_CyberpunkDrums_01_849.wav"></audio>
+  <audio data-key="70" src="./d/Cyberpunk_Mini_Noiiz/100_D_EvilBass_01_849.wav"></audio>
+  <audio data-key="71" src="./d/Cyberpunk_Mini_Noiiz/PunchierKick_849.wav"></audio>
+  <audio data-key="72" src="./d/Cyberpunk_Mini_Noiiz/CyberpunkUplifter.wav"></audio>
+  <audio data-key="74" src="./d/Cyberpunk_Mini_Noiiz/"></audio>
+  <audio data-key="75" src="./d/Cyberpunk_Mini_Noiiz/"></audio>
+  <audio data-key="76" src="./d/Cyberpunk_Mini_Noiiz/"></audio>
 
-<script>
+  <script>
 
-function playSound(e){ 
-  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
- 
-  if(!audio) return; //stop the function from runnin all together
-   
-  audio.currentTime = 0; // rewind from the start
-  audio.play();
+    function playSound(e) {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
 
-  key.classList.add('playing');};
+      // if(!audio) return; //stop the function from runnin all together
 
-function removeTransition(e){
-     if(e.propertyName !== 'transform') return;
-     this.classList.remove('playing');
+      audio.currentTime = 0; // rewind from the start
+      if (audio.paused) { audio.play();audio.loop=true;}
+      else { audio.pause(); }
+
+      key.classList.add('playing');
     };
 
-const keys = document.querySelectorAll('.key');
-keys.forEach( key => key.addEventListener('transitionend', removeTransition));
-  
+    function removeTransition(e) {
+      if (e.propertyName !== 'transform') return;
+      this.classList.remove('playing');
+    };
+
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 
-   window.addEventListener('keydown',playSound);
-</script>
+    window.addEventListener('keydown', playSound);
+  </script>
 
 
 </body>
+
 </html>
