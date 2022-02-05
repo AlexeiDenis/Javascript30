@@ -49,15 +49,15 @@
     </div>
   </div>
 
-  <audio data-key="65" src="./d/Cyberpunk_Mini_Noiiz/100_ D_AcidKindaSynth_849.wav"></audio>
-  <audio data-key="83" src="./d/Cyberpunk_Mini_Noiiz/SmackSnare_849.wav"></audio>
-  <audio data-key="68" src="./d/Cyberpunk_Mini_Noiiz/100_CyberpunkDrums_01_849.wav"></audio>
-  <audio data-key="70" src="./d/Cyberpunk_Mini_Noiiz/100_D_EvilBass_01_849.wav"></audio>
-  <audio data-key="71" src="./d/Cyberpunk_Mini_Noiiz/PunchierKick_849.wav"></audio>
-  <audio data-key="72" src="./d/Cyberpunk_Mini_Noiiz/CyberpunkUplifter.wav"></audio>
-  <audio data-key="74" src="./sounds/voce1.mp3"></audio>
-  <audio data-key="75" src="./d/Cyberpunk_Mini_Noiiz/"></audio>
-  <audio data-key="76" src="./d/Cyberpunk_Mini_Noiiz/"></audio>
+  <audio data-key="65" src="./d/beatcox/BeatboxBass_01_121_SP.wav"></audio>
+  <audio data-key="83" src="./d/beatcox/BeatBoxHat_04_559.wav"></audio>
+  <audio data-key="68" src="./d/beatcox/BeatBoxKick_01_559.wav"></audio>
+  <audio data-key="70" src="./d/beatcox/BeatBoxKick_04_559.wav"></audio>
+  <audio data-key="71" src="./d/beatcox/BeatBoxKick_05_559.wav"></audio>
+  <audio data-key="72" src="./d/beatcox/BeatBoxSnare_03_559.wav"></audio>
+  <audio data-key="74" src="./d/beatcox/CHOIR.wav"></audio>
+  <audio data-key="75" src="./d/beatcox/looperman-l-2991958-0282289-sombrero-latin-guitar.wav"></audio>
+  <audio data-key="76" src="./sounds/smooth-guitar-loop.wav"></audio>
 
   <script>
 
@@ -65,18 +65,24 @@
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
       const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
 
-      // if(!audio) return; //stop the function from runnin all together
+      if(!audio) return; //stop the function from runnin all together
 
       audio.currentTime = 0; // rewind from the start
-      if (audio.paused) { audio.play();audio.loop=true;}
-      else { audio.pause(); }
-
+    
+      if (audio.paused) 
+        { 
+        audio.play();
+        }else 
+         { audio.pause(); }
+        //  audio.loop=true;
       key.classList.add('playing');
+      console.log(e.keyCode);
     };
 
     function removeTransition(e) {
-      if (e.propertyName !== 'transform') return;
+      if (e.propertyName == 'transform') return;
       this.classList.remove('playing');
+      
     };
 
     const keys = document.querySelectorAll('.key');
